@@ -30,8 +30,8 @@ public class AddressServiceImpl implements AddressService {
         if (addressDto.getStreet() != null) address.setStreet(addressDto.getStreet());
         if (addressDto.getCity() != null) address.setCity(addressDto.getCity());
         if (addressDto.getProvince() != null) address.setProvince(addressDto.getProvince());
-        if (address.getPostalCode() != null) address.setPostalCode(addressDto.getPostalCode());
-        if (address.getCountry() != null) address.setCountry(addressDto.getCountry());
+        if (addressDto.getPostalCode() != null) address.setPostalCode(addressDto.getPostalCode());
+        if (addressDto.getCountry() != null) address.setCountry(addressDto.getCountry());
 
         addressRepo.save(address);
 
