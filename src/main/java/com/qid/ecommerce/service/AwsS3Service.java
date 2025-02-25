@@ -55,7 +55,7 @@ public class AwsS3Service {
             PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, s3FileName, inputStream, metadata);
             s3Client.putObject(putObjectRequest);
 
-            String s3Url = "https://" + bucketName + ".s3." + awsRegion + ".amazonaws.com" + s3FileName;
+            String s3Url = "https://" + bucketName + ".s3." + awsRegion + ".amazonaws.com/" + s3FileName;
 
             return s3Url;
 
