@@ -6,6 +6,7 @@ The frontend for this project is available at: [E-Commerce Frontend](https://git
 
 ## Table of Contents
 
+- [Architecture Diagram](#architecture-diagram)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Getting Started](#getting-started)
@@ -15,6 +16,12 @@ The frontend for this project is available at: [E-Commerce Frontend](https://git
 - [API Documentation](#api-documentation)
 - [Contributing](#contributing)
 - [License](#license)
+
+## Architecture Diagram
+
+The following diagram provides an overview of the system architecture:
+
+![Architecture Diagram](docs/architecture-diagram.png)
 
 ## Features
 
