@@ -1,6 +1,7 @@
 package com.qid.ecommerce.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -15,6 +16,7 @@ public class Category {
     private Long id;
 
     @Column(unique = true)
+    @NotBlank(message = "Name is required")
     private String name;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
