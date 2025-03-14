@@ -48,8 +48,14 @@ public class EntityDtoMapper {
         OrderItemDto orderItemDto = new OrderItemDto();
         orderItemDto.setId(orderItem.getId());
         orderItemDto.setQuantity(orderItem.getQuantity());
+        orderItemDto.setPrice(orderItem.getPrice());
         orderItemDto.setStatus(orderItem.getStatus().name());
         orderItemDto.setCreatedAt(orderItem.getCreatedAt());
+
+        if (orderItem.getUser() != null) {
+            UserDto userDto = mapUserToDtoBasic(orderItem.getUser());
+            orderItemDto.setUser(userDto);
+        }
 
         return orderItemDto;
     }
