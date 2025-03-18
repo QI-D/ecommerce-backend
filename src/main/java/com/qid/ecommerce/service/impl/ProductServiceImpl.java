@@ -79,11 +79,20 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Response deleteProduct(Long productId) {
         Product product = productRepo.findById(productId).orElseThrow(() -> new NotFoundException("Product not found"));
+
+        String imageUrl = product.getImageUrl();
+        String fileName = extractFileNameFromUrl(imageUrl);
+        awsS3Service.deleteImageFromS3(fileName);
+
         productRepo.delete(product);
         return Response.builder()
                 .status(200)
                 .message("Product deleted successfully")
                 .build();
+    }
+
+    private String extractFileNameFromUrl(String url) {
+        return url.substring(url.lastIndexOf("/") + 1); // Extracts file name from URL
     }
 
     @Override

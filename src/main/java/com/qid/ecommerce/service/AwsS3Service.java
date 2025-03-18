@@ -65,4 +65,25 @@ public class AwsS3Service {
             throw new RuntimeException("Unable to upload image to S3: " + e.getMessage());
         }
     }
+
+    public void deleteImageFromS3(String fileName) {
+        try {
+            // Create AWS credentials using access key ID and secret access key
+            BasicAWSCredentials awsCredentials = new BasicAWSCredentials(awsS3AccessKeyId, awsS3SecretAccessKey);
+
+            // Create an S3 client with configured credentials and region
+            AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
+                    .withCredentials(new AWSStaticCredentialsProvider(awsCredentials))
+                    .withRegion(awsRegion)
+                    .build();
+
+            // Delete the image from S3 using the bucket name and file name
+            s3Client.deleteObject(bucketName, fileName);
+
+            log.info("Image deleted successfully from S3: {}", fileName);
+        } catch (Exception e) {
+            log.error("Error deleting image from S3: {}", e.getMessage());
+            throw new RuntimeException("Unable to delete image from S3: " + e.getMessage());
+        }
+    }
 }
